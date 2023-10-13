@@ -15,6 +15,7 @@ router.post("/signup", async (req, res) => {
       const hashedUser = await { ...req.body, password: hashedPassword };
       // add new user
       const result = await newAddedUser(hashedUser);
+      console.log(result);
       if (!result.acknowledged) {
         return res
           .status(400)

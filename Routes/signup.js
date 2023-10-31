@@ -8,7 +8,7 @@ router.post("/signup", async (req, res) => {
   try {
     //generate salt value
     const salt = await bcrypt.genSalt(10);
-    const signUpUser = await getUser(req.body.email);
+    const signUpUser = await getUser(await req.body.email);
     if (!signUpUser) {
       //hash req.body password
       const hashedPassword = await bcrypt.hash(req.body.password, salt);

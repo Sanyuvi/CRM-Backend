@@ -5,7 +5,6 @@ import {
   editUsersbyId,
   getAllUsers,
 } from "../Controllers/User.js";
-import { isAuthenticated } from "../Authentication/auth.js";
 import { isAuthorized } from "../Authorization/authorize.js";
 
 const router = express.Router();
@@ -59,7 +58,7 @@ router.delete("/delete/:id", isAuthorized(["Admin"]), async (req, res) => {
     const deletedResult = await deleteUsersbyId(id);
     res
       .status(200)
-      .send({ reulst: deletedResult, success: "Deleted Successfully" });
+      .send({ result: deletedResult, success: "Deleted Successfully" });
   } catch (error) {
     console.log(error);
     res.status(500).send({ Message: "Internal Server error" });

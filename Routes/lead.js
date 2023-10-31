@@ -70,7 +70,7 @@ router.delete(
       const deletedResult = await deleteLeadsbyId(id);
       res
         .status(200)
-        .send({ reulst: deletedResult, success: "Deleted Successfully" });
+        .send({ result: deletedResult, success: "Deleted Successfully" });
     } catch (error) {
       console.log(error);
       res.status(500).send({ message: "Internal server error" });

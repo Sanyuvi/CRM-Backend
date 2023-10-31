@@ -4,6 +4,7 @@ export const isAuthorized = (allowedRoles) => {
   return async (req, res, next) => {
     try {
       const userRole = await getUserRole(req.user.id);
+
       if (!userRole || !allowedRoles.includes(userRole)) {
         return res.status(403).send({ message: "Access denied" });
       }
@@ -14,26 +15,3 @@ export const isAuthorized = (allowedRoles) => {
     }
   };
 };
-// export const isAdmin = (req, res, next) => {
-//   if (req.user.role === "Admin") {
-//     next(); // User is Admin, proceed
-//   } else {
-//     res.status(403).json({ message: "Access denied" });
-//   }
-// };
-
-// export const isManager = (req, res, next) => {
-//   if (req.user.role === "Manager") {
-//     next(); // User is Manager, proceed
-//   } else {
-//     res.status(403).json({ message: "Access denied" });
-//   }
-// };
-
-// export const isEmployee = (req, res, next) => {
-//   if (req.user.role === "Employee") {
-//     next(); // User is Employee, proceed
-//   } else {
-//     res.status(403).json({ message: "Access denied" });
-//   }
-// };

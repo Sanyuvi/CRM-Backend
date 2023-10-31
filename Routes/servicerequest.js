@@ -5,7 +5,6 @@ import {
   editRequestbyId,
   getAllrequest,
 } from "../Controllers/servicerequest.js";
-import { isAuthenticated } from "../Authentication/auth.js";
 import { isAuthorized } from "../Authorization/authorize.js";
 
 const router = express.Router();
@@ -70,7 +69,7 @@ router.delete(
       const deletedResult = await deleteRequestbyId(id);
       res
         .status(200)
-        .send({ reulst: deletedResult, success: "Deleted Successfully" });
+        .send({ result: deletedResult, success: "Deleted Successfully" });
     } catch (error) {
       console.log(error);
       res.status(500).send({ message: "Internal server error" });
